@@ -71,37 +71,5 @@ public class VirusScanService {
             throw new IOException("Virus scan failed: " + e.getMessage(), e);
         }
     }
-
-    /**
-     * Check if a file is clean (no viruses detected)
-     *
-     * @param filePath Path to the file to check
-     * @return true if file is clean, false if virus found
-     * @throws IOException if there's an error during scanning
-     */
-    public boolean isFileClean(String filePath) throws IOException {
-        ScanResult result = scanFile(filePath);
-        // null means ClamAV is disabled, treat as clean
-        return result == null || result instanceof ScanResult.OK;
-    }
-
-    /**
-     * Ping ClamAV server to check if it's available
-     *
-     * @return true if ClamAV is responding, false otherwise
-     */
-    public boolean ping() {
-        if (!clamavEnabled || clamavClient == null) {
-            return false;
-        }
-
-        try {
-            clamavClient.ping();
-            return true;
-        } catch (Exception e) {
-            log.error("Failed to ping ClamAV server", e);
-            return false;
-        }
-    }
 }
 

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/submissions")
+@RequestMapping(value = "/api/submissions", version = "1")
 @RequiredArgsConstructor
 @Slf4j
 public class SubmissionController {

@@ -32,7 +32,6 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
 
-        // Use JacksonJsonDeserializer (non-deprecated)
         JacksonJsonDeserializer<SubmissionEvent> jsonDeserializer =
                 new JacksonJsonDeserializer<>(SubmissionEvent.class);
         return new DefaultKafkaConsumerFactory<>(
